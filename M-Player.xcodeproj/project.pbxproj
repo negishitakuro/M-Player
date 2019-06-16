@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1A6FD322B0C268001C9859 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1A6FD222B0C268001C9859 /* MusicListViewController.swift */; };
+		5D1A6FD622B0CE3D001C9859 /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1A6FD422B0CE3D001C9859 /* MusicCell.swift */; };
+		5D1A6FD722B0CE3D001C9859 /* MusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D1A6FD522B0CE3D001C9859 /* MusicCell.xib */; };
 		5DA6318722A262A100324DFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6318622A262A100324DFB /* AppDelegate.swift */; };
 		5DA6318922A262A100324DFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6318822A262A100324DFB /* ViewController.swift */; };
 		5DA6318C22A262A100324DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA6318A22A262A100324DFB /* Main.storyboard */; };
@@ -14,6 +17,7 @@
 		5DA6319122A262A200324DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA6318F22A262A200324DFB /* LaunchScreen.storyboard */; };
 		5DA6319C22A262A200324DFB /* M_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6319B22A262A200324DFB /* M_PlayerTests.swift */; };
 		5DA631A722A262A200324DFB /* M_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA631A622A262A200324DFB /* M_PlayerUITests.swift */; };
+		5DAA417A22B6447600C0AB84 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA417922B6447600C0AB84 /* MusicData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D1A6FD222B0C268001C9859 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
+		5D1A6FD422B0CE3D001C9859 /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		5D1A6FD522B0CE3D001C9859 /* MusicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCell.xib; sourceTree = "<group>"; };
 		5DA6318322A262A100324DFB /* M-Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "M-Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA6318622A262A100324DFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DA6318822A262A100324DFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,7 @@
 		5DA631A222A262A200324DFB /* M-PlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "M-PlayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA631A622A262A200324DFB /* M_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PlayerUITests.swift; sourceTree = "<group>"; };
 		5DA631A822A262A200324DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DAA417922B6447600C0AB84 /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +108,13 @@
 				5DA6318622A262A100324DFB /* AppDelegate.swift */,
 				5DA6318822A262A100324DFB /* ViewController.swift */,
 				5DA6318A22A262A100324DFB /* Main.storyboard */,
+				5D1A6FD422B0CE3D001C9859 /* MusicCell.swift */,
+				5D1A6FD522B0CE3D001C9859 /* MusicCell.xib */,
+				5D1A6FD222B0C268001C9859 /* MusicListViewController.swift */,
 				5DA6318D22A262A200324DFB /* Assets.xcassets */,
 				5DA6318F22A262A200324DFB /* LaunchScreen.storyboard */,
 				5DA6319222A262A200324DFB /* Info.plist */,
+				5DAA417922B6447600C0AB84 /* MusicData.swift */,
 			);
 			path = "M-Player";
 			sourceTree = "<group>";
@@ -193,6 +205,11 @@
 				TargetAttributes = {
 					5DA6318222A262A100324DFB = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					5DA6319622A262A200324DFB = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -229,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1A6FD722B0CE3D001C9859 /* MusicCell.xib in Resources */,
 				5DA6319122A262A200324DFB /* LaunchScreen.storyboard in Resources */,
 				5DA6318E22A262A200324DFB /* Assets.xcassets in Resources */,
 				5DA6318C22A262A100324DFB /* Main.storyboard in Resources */,
@@ -256,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAA417A22B6447600C0AB84 /* MusicData.swift in Sources */,
 				5DA6318922A262A100324DFB /* ViewController.swift in Sources */,
 				5DA6318722A262A100324DFB /* AppDelegate.swift in Sources */,
+				5D1A6FD322B0C268001C9859 /* MusicListViewController.swift in Sources */,
+				5D1A6FD622B0CE3D001C9859 /* MusicCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
