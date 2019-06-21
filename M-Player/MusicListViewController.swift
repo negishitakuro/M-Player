@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 // 楽曲リスト選択画面
-class MusicListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MusicListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AudioControlDelegate {
     
     @IBOutlet weak var musicListTableView: UITableView!
     //　楽曲リスト
@@ -45,7 +45,9 @@ class MusicListViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicCell
         // セルに表示する値を設定する
         let musicData = listItems[indexPath.row]
-        cell.setCellData(image: musicData.image!, title: musicData.title, artistName: musicData.artist, albumName: musicData.albumName)
+        cell.initCellData(itemIndex: indexPath.row, image: musicData.image!, title: musicData.title, artistName: musicData.artist, albumName: musicData.albumName)
+        // delegateのセット(= delegateのい委譲先インスタンスとして自分自身をと登録)
+        cell.delegate = self
         return cell
     }
     
@@ -59,6 +61,33 @@ class MusicListViewController: UIViewController, UITableViewDelegate, UITableVie
         let _ = next?.view // ** hack code **
         next?.musicData = listItems[indexPath.row]
         self.present(next!,animated: true, completion: nil)
+    }
+    
+    // AudioControlDelegateMethod
+    
+    // MusicCellの再生ボタンがタップされた事を通知
+    func didTappedStart(index: Int) {
+        // 前回再生した曲 or 再生中の曲と違う曲の場合,現在の曲を停止,曲を切り替えて再生
+        if (AudioManager.getAudioIndex() != index) {
+            AudioManager.stop()
+            AudioManager.setAudio(audioURL: listItems[index].audioURL, audioIndex: index)
+            AudioManager.play()
+        } else {
+            // 前回再生した曲と同じ曲の場合,停止していれば再生
+            if (!AudioManager.isPlaying()) {
+                AudioManager.play()
+            }
+        }
+    }
+    
+    // MusicCellの停止ボタンがタップされた事を通知
+    func didTappedStop(index: Int) {
+        AudioManager.stop()
+    }
+    
+    // MusicCellの一時停止ボタンがタップされた事を通知
+    func didTappedPause(index: Int) {
+        AudioManager.pause()
     }
 }
 

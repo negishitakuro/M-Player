@@ -8,12 +8,26 @@
 
 import UIKit
 
+// タップイベント通知用プロトコルを記述
+@objc protocol AudioControlDelegate {
+    // デリゲートメソッド定義
+    func didTappedStart(index: Int)
+    func didTappedStop(index: Int)
+    func didTappedPause(index: Int)
+}
+
 class MusicCell: UITableViewCell {
 
     @IBOutlet weak var musicImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var startImgBtn: UIImageView!
+    @IBOutlet weak var stopImgBtn: UIImageView!
+    @IBOutlet weak var pauseImgBtn: UIImageView!
+    var index: Int = 0
+    // AudioControlDelegateのインスタンスを宣言
+    weak var delegate: AudioControlDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,27 +41,37 @@ class MusicCell: UITableViewCell {
     }
     
     // セルに曲情報をセット
-    func setCellData(image: UIImage, title: String, artistName: String, albumName: String) {
-//        musicImage.image = image.resize(size: CGSize(width: 50, height: 50))
+    func initCellData(itemIndex: Int, image: UIImage, title: String, artistName: String, albumName: String) {
+        index = itemIndex
         musicImage.image = image
         titleLabel.text = title
         artistLabel.text = artistName
         albumLabel.text = albumName
+        startImgBtn.image = UIImage(named: "playBtn")
+        stopImgBtn.image = UIImage(named: "stopBtn")
+        pauseImgBtn.image = UIImage(named: "pauseBtn")
+        
+        // 再生,停止,一時停止ボタンにタップイベント登録
+        startImgBtn.isUserInteractionEnabled = true
+        startImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.startTapped(_:))))
+        
+        stopImgBtn.isUserInteractionEnabled = true
+        stopImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.stopTapped(_:))))
+        
+        pauseImgBtn.isUserInteractionEnabled = true
+        pauseImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.pauseTapped(_:))))
+    }
+    
+    @objc func startTapped(_ sender: UITapGestureRecognizer) {
+        // デリゲートメソッドを呼ぶ(処理をデリゲートインスタンスに委譲する)
+        delegate?.didTappedStart(index: index)
+    }
+    
+    @objc func stopTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.didTappedStop(index: index)
+    }
+    
+    @objc func pauseTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.didTappedPause(index: index)
     }
 }
-
-//extension UIImage {
-//
-//    func resize(size: CGSize) -> UIImage {
-//        let widthRatio = size.width / self.size.width
-//        let heightRatio = size.height / self.size.height
-//        let ratio = (widthRatio < heightRatio) ? widthRatio : heightRatio
-//        let resizedSize = CGSize(width: (self.size.width * ratio), height: (self.size.height * ratio))
-//        // 画質を落とさないように以下を修正
-//        UIGraphicsBeginImageContextWithOptions(resizedSize, false, 0.0)
-//        draw(in: CGRect(x: 0, y: 0, width: resizedSize.width, height: resizedSize.height))
-//        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        return resizedImage!
-//    }
-//}

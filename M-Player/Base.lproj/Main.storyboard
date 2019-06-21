@@ -88,7 +88,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZWT-Cf-GkS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="707"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -96,6 +96,17 @@
                                     <outlet property="delegate" destination="dcv-To-GaZ" id="seN-sH-0Uu"/>
                                 </connections>
                             </tableView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cV-ag-qRe">
+                                <rect key="frame" x="0.0" y="803" width="414" height="59"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="lBC-br-9qj" kind="embed" id="2yD-Jh-A9U"/>
+                                </connections>
+                            </containerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2TC-J0-OyF">
+                                <rect key="frame" x="10" y="820" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="OJ6-a7-G0u"/>
@@ -107,6 +118,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1V-Sc-uYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-642.02898550724638" y="20.758928571428569"/>
+        </scene>
+        <!--Audio Control View Controller-->
+        <scene sceneID="DrE-4d-krO">
+            <objects>
+                <viewController id="lBC-br-9qj" customClass="AudioControlViewController" customModule="M_Player" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Znn-dR-6Fq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AT4-MV-G3Q">
+                                <rect key="frame" x="355" y="7" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Qy2-vD-uYD"/>
+                                    <constraint firstAttribute="width" constant="45" id="tQ4-JF-cHI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AT4-MV-G3Q" firstAttribute="centerY" secondItem="Znn-dR-6Fq" secondAttribute="centerY" id="19M-WA-jwV"/>
+                            <constraint firstAttribute="trailing" secondItem="AT4-MV-G3Q" secondAttribute="trailing" constant="14" id="ERS-xZ-daa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xYq-5W-jjG"/>
+                    </view>
+                    <connections>
+                        <outlet property="startPauseImgBtn" destination="AT4-MV-G3Q" id="0xM-7I-IUK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cd8-Ki-xLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.507246376811594" y="665.95982142857144"/>
         </scene>
     </scenes>
 </document>

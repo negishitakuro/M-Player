@@ -18,6 +18,8 @@
 		5DA6319C22A262A200324DFB /* M_PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA6319B22A262A200324DFB /* M_PlayerTests.swift */; };
 		5DA631A722A262A200324DFB /* M_PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA631A622A262A200324DFB /* M_PlayerUITests.swift */; };
 		5DAA417A22B6447600C0AB84 /* MusicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA417922B6447600C0AB84 /* MusicData.swift */; };
+		5DF3FB3422BC999A0079E23F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF3FB3322BC999A0079E23F /* AudioManager.swift */; };
+		5DF3FB3622BCBBB30079E23F /* AudioControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF3FB3522BCBBB30079E23F /* AudioControlViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		5DA631A622A262A200324DFB /* M_PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M_PlayerUITests.swift; sourceTree = "<group>"; };
 		5DA631A822A262A200324DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DAA417922B6447600C0AB84 /* MusicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicData.swift; sourceTree = "<group>"; };
+		5DF3FB3322BC999A0079E23F /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		5DF3FB3522BCBBB30079E23F /* AudioControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioControlViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				5DA6318F22A262A200324DFB /* LaunchScreen.storyboard */,
 				5DA6319222A262A200324DFB /* Info.plist */,
 				5DAA417922B6447600C0AB84 /* MusicData.swift */,
+				5DF3FB3322BC999A0079E23F /* AudioManager.swift */,
+				5DF3FB3522BCBBB30079E23F /* AudioControlViewController.swift */,
 			);
 			path = "M-Player";
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF3FB3422BC999A0079E23F /* AudioManager.swift in Sources */,
+				5DF3FB3622BCBBB30079E23F /* AudioControlViewController.swift in Sources */,
 				5DAA417A22B6447600C0AB84 /* MusicData.swift in Sources */,
 				5DA6318922A262A100324DFB /* ViewController.swift in Sources */,
 				5DA6318722A262A100324DFB /* AppDelegate.swift in Sources */,
