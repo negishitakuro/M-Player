@@ -11,6 +11,7 @@ import AVFoundation
 // 音楽制御クラス
 class AudioManager {
     static var audioPlayer: AVAudioPlayer!
+    static var musicData: MusicData!
     static var index: Int = -1
     
     // 自動的に遅延初期化される(初回アクセスのタイミングでインスタンス生成)
@@ -18,7 +19,8 @@ class AudioManager {
     // 外部からのインスタンス生成をコンパイルレベルで禁止
     private init() {}
     
-    static func setAudio(audioURL: URL, audioIndex: Int) {
+    static func setAudio(musicData: MusicData, audioIndex: Int) {
+        self.musicData = musicData
         // auido を再生するプレイヤーを作成する
         var audioError:NSError?
         do {
@@ -28,7 +30,7 @@ class AudioManager {
             if (audioPlayer != nil) {
                 loopNum = audioPlayer.numberOfLoops
             }
-            audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+            audioPlayer = try AVAudioPlayer(contentsOf: musicData.audioURL)
             audioPlayer.numberOfLoops = loopNum
             
             // 楽曲番号を記録
@@ -80,6 +82,10 @@ class AudioManager {
     
     static func getAudioIndex() -> Int {
         return index
+    }
+    
+    static func getMusicData() -> MusicData! {
+        return musicData
     }
     
     // 曲のループ指定メソッド

@@ -11,9 +11,7 @@ import UIKit
 // タップイベント通知用プロトコルを記述
 @objc protocol AudioControlDelegate {
     // デリゲートメソッド定義
-    func didTappedStart(index: Int)
-    func didTappedStop(index: Int)
-    func didTappedPause(index: Int)
+    func didTappedItemStartPause(index: Int)
 }
 
 class MusicCell: UITableViewCell {
@@ -22,8 +20,6 @@ class MusicCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
-    @IBOutlet weak var startImgBtn: UIImageView!
-    @IBOutlet weak var stopImgBtn: UIImageView!
     @IBOutlet weak var pauseImgBtn: UIImageView!
     var index: Int = 0
     // AudioControlDelegateのインスタンスを宣言
@@ -47,31 +43,14 @@ class MusicCell: UITableViewCell {
         titleLabel.text = title
         artistLabel.text = artistName
         albumLabel.text = albumName
-        startImgBtn.image = UIImage(named: "playBtn")
-        stopImgBtn.image = UIImage(named: "stopBtn")
-        pauseImgBtn.image = UIImage(named: "pauseBtn")
+        pauseImgBtn.image = UIImage(named: "playBtn")
         
-        // 再生,停止,一時停止ボタンにタップイベント登録
-        startImgBtn.isUserInteractionEnabled = true
-        startImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.startTapped(_:))))
-        
-        stopImgBtn.isUserInteractionEnabled = true
-        stopImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.stopTapped(_:))))
-        
+        // 再生/一時停止ボタンにタップイベント登録
         pauseImgBtn.isUserInteractionEnabled = true
         pauseImgBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MusicCell.pauseTapped(_:))))
     }
     
-    @objc func startTapped(_ sender: UITapGestureRecognizer) {
-        // デリゲートメソッドを呼ぶ(処理をデリゲートインスタンスに委譲する)
-        delegate?.didTappedStart(index: index)
-    }
-    
-    @objc func stopTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.didTappedStop(index: index)
-    }
-    
     @objc func pauseTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.didTappedPause(index: index)
+        delegate?.didTappedItemStartPause(index: index)
     }
 }
