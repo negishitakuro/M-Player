@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 import AVFoundation
 
 protocol MusicListViewDelegate {
@@ -23,9 +24,13 @@ AudioControlDelegate, AudioControlViewDelegate {
     @IBOutlet weak var musicListTableView: UITableView!
     //　楽曲リスト
     var listItems:[MusicData]!
+    // 楽曲のお気に入りフラグリスト
+    var musicFavList: Results<MusicEntity>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let realm = try! Realm()
+        self.musicFavList = realm.objects(MusicEntity.self)
         
         // テーブルビューの各セルにカスタムセルクラスを設定
         musicListTableView.register (UINib(nibName: "MusicCell", bundle: nil),forCellReuseIdentifier:"MusicCell")
@@ -35,7 +40,7 @@ AudioControlDelegate, AudioControlViewDelegate {
         do {
             let contentUrls = try FileManager.default.contentsOfDirectory(at: documentDirectoryURL, includingPropertiesForKeys: nil)
             //　URLから楽曲リスト作成
-            listItems = contentUrls.map{MusicData(musicFileURL: $0.absoluteURL)}
+            listItems = contentUrls.filter{$0.absoluteString.contains(".m4a")}.map{MusicData(musicFileURL: $0.absoluteURL)}
         } catch {
             print(error)
         }
@@ -63,9 +68,30 @@ AudioControlDelegate, AudioControlViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath) as! MusicCell
         // セルに表示する値を設定する
         let musicData = listItems[indexPath.row]
-        cell.initCellData(itemIndex: indexPath.row, image: musicData.image!, title: musicData.title, artistName: musicData.artist, albumName: musicData.albumName)
-        // delegateのセット(= delegateの委譲先インスタンスとして自分自身をと登録)
-        cell.delegate = self
+        
+            let realm = try! Realm()
+
+            var isExists: Bool  = false
+            var isfav: Bool  = false
+            for musicEntity in musicFavList {
+                if (musicEntity.title == musicData.title) {
+                    isExists = true
+                    isfav = musicEntity.isFavorite
+                    break
+                }
+            }
+
+            if (!isExists) {
+                let musicEntity: MusicEntity = MusicEntity()
+                musicEntity.title = musicData.title
+                try! realm.write {
+                    realm.add(musicEntity)
+                }
+            }
+            
+            cell.initCellData(itemIndex: indexPath.row, image: musicData.image!, title: musicData.title, artistName: musicData.artist, albumName: musicData.albumName, isFav: isfav)
+            // delegateのセット(= delegateの委譲先インスタンスとして自分自身をと登録)
+            cell.delegate = self
         return cell
     }
     
@@ -75,10 +101,10 @@ AudioControlDelegate, AudioControlViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // 遷移処理
-        let next = storyboard!.instantiateViewController(withIdentifier: "nextView") as? ViewController
-        let _ = next?.view // ** hack code **
-        next?.musicData = listItems[indexPath.row]
-        self.present(next!,animated: true, completion: nil)
+//        let next = storyboard!.instantiateViewController(withIdentifier: "nextView") as? ViewController
+//        let _ = next?.view // ** hack code **
+//        next?.musicData = listItems[indexPath.row]
+//        self.present(next!,animated: true, completion: nil)
     }
     
     /*** AudioControlDelegateMethod ***/

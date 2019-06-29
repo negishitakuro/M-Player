@@ -61,12 +61,21 @@
                             <constraint firstAttribute="width" constant="30" id="izi-KT-3ju"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JQE-qz-3dP">
+                        <rect key="frame" x="387" y="34.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="31h-Hr-xib"/>
+                            <constraint firstAttribute="height" constant="30" id="ToI-of-czG"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="8Ix-0x-4dF" firstAttribute="leading" secondItem="hJn-UO-okV" secondAttribute="leading" id="3eU-tT-UCx"/>
                     <constraint firstItem="YT8-BZ-BtP" firstAttribute="leading" secondItem="hJn-UO-okV" secondAttribute="leading" id="6gj-bV-0s9"/>
                     <constraint firstItem="tTH-Fn-Eaf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GYI-PX-oZw"/>
+                    <constraint firstItem="JQE-qz-3dP" firstAttribute="top" secondItem="297-sH-era" secondAttribute="top" id="MJ0-YL-DMN"/>
                     <constraint firstItem="YT8-BZ-BtP" firstAttribute="firstBaseline" secondItem="hJn-UO-okV" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="MPH-5X-JOW"/>
+                    <constraint firstItem="297-sH-era" firstAttribute="leading" secondItem="JQE-qz-3dP" secondAttribute="trailing" constant="8" id="Y9q-Kw-C1m"/>
                     <constraint firstItem="hJn-UO-okV" firstAttribute="leading" secondItem="tTH-Fn-Eaf" secondAttribute="trailing" constant="18" id="Yfv-v4-1hj"/>
                     <constraint firstItem="297-sH-era" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="hjR-dn-FjQ"/>
                     <constraint firstItem="hJn-UO-okV" firstAttribute="firstBaseline" secondItem="8Ix-0x-4dF" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="jOz-R6-0dE"/>
@@ -80,6 +89,7 @@
             <connections>
                 <outlet property="albumLabel" destination="YT8-BZ-BtP" id="Yhi-jF-IbB"/>
                 <outlet property="artistLabel" destination="hJn-UO-okV" id="RLG-XZ-j5x"/>
+                <outlet property="favImgBtn" destination="JQE-qz-3dP" id="Jfp-cB-Uaa"/>
                 <outlet property="musicImage" destination="tTH-Fn-Eaf" id="DUr-SU-lre"/>
                 <outlet property="pauseImgBtn" destination="297-sH-era" id="sdq-zg-h73"/>
                 <outlet property="titleLabel" destination="8Ix-0x-4dF" id="4y9-Qp-8jM"/>

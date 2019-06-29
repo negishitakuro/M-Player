@@ -6,7 +6,15 @@
 //  Copyright © 2019 negishitakuro. All rights reserved.
 //
 
+import Foundation
+import RealmSwift
+
 class MusicEntity: Object {
     @objc dynamic var title = ""
     @objc dynamic var isFavorite = false
+    
+    // プライマリキーに設定
+    override static func primaryKey() -> String? {
+        return "title"
+    }
 }
